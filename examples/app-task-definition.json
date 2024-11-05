@@ -1,0 +1,54 @@
+[{
+    "family": "my-Task",
+    "containerDefinitions": [
+      {
+        "name": "app-container",
+        "image": "PLACEHOLDER",
+        "repositoryCredentials": {
+          "credentialsParameter": "PLACEHOLDER"
+        },
+        "cpu": 0,
+        "portMappings": [
+          {
+            "containerPort": 80,
+            "hostPort": 80,
+            "protocol": "tcp"
+          }
+        ],
+        "essential": true,
+        "environment": [],
+        "command": [],
+        "mountPoints": [],
+        "volumesFrom": []
+      },
+      {
+        "name": "datadog-agent",
+        "image": "datadog/agent:7",
+        "cpu": 0,
+        "portMappings": [],
+        "essential": true,
+        "environment": [
+          {
+            "name": "ECS_FARGATE",
+            "value": "true"
+          }
+        ],
+        "mountPoints": [],
+        "volumesFrom": [],
+        "secrets": [
+          {
+            "name": "DD_API_KEY",
+            "valueFrom": "PLACEHOLDER"
+          }
+        ]
+      }
+    ],
+    "taskRoleArn": "PLACEHOLDER",
+    "executionRoleArn": "PLACEHOLDER",
+    "networkMode": "awsvpc",
+    "requiresCompatibilities": [
+      "FARGATE"
+    ],
+    "cpu": "256",
+    "memory": "512"
+  }]
